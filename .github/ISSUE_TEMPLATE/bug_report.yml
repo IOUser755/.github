@@ -1,0 +1,14 @@
+name: Bug report
+description: File a bug
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes: {label: What happened?, description: Steps to reproduce}
+    validations: {required: true}
+  - type: textarea
+    id: expected
+    attributes: {label: Expected behavior}
+  - type: textarea
+    id: logs
+    attributes: {label: Logs / screenshots}
