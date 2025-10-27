@@ -1,0 +1,15 @@
+name: Node CI
+on: [push, pull_request]
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    if: hashFiles('**/package.json') != ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 'lts/*', cache: 'npm' }
+      - run: npm ci
+        if: hashFiles('package-lock.json') != ''
+      - run: npm run lint --if-present
+      - run: npm run typecheck --if-present
+      - run: npm test --if-present
